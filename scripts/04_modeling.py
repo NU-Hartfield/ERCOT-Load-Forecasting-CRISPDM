@@ -8,7 +8,7 @@ for ERCOT load forecasting using a chronological train-test split.
 
 import pandas as pd
 from sklearn.linear_model import LinearRegression
-
+from pathlib import Path
 def main():
     file_path = "data/processed/ercot_processed.csv"
     df = pd.read_csv(file_path)
@@ -72,7 +72,10 @@ def main():
             "predicted": predictions
         })
 
-        output_file = f"outputs/predictions/{model_name.lower()}.csv"
+        predictions_dir = Path("outputs/predictions")
+        predictions_dir.mkdir(parents=True, exist_ok=True)
+        
+        output_file = predictions_dir / f"{model_name.lower()}.csv"
         output.to_csv(output_file, index=False)
 
         print(f"{model_name} complete.")

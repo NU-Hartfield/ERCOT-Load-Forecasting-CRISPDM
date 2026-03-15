@@ -8,6 +8,7 @@ Evaluate and compare baseline and feature-engineered models.
 import pandas as pd
 import numpy as np
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from pathlib import Path
 
 def evaluate_file(file_path, model_name):
     df = pd.read_csv(file_path)
@@ -43,9 +44,12 @@ def main():
         )
     )
 
+    metrics_dir = Path("outputs/metrics")
+    metrics_dir.mkdir(parents=True, exist_ok=True)
+
     metrics_df = pd.DataFrame(results)
     metrics_df.to_csv("outputs/metrics/evaluation_metrics.csv", index=False)
-
+   
     print("Evaluation complete.")
     print(metrics_df)
 
