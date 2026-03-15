@@ -1,0 +1,15 @@
+CRISP-DM Stage: Business Understanding
+
+Project: ERCOT Electricity Load Forecasting
+Framework: CRISP-DM
+
+Objective:
+Forecast ERCOT electricity demand using historical load data and machine learning.
+
+Business Relevance:
+Accurate electricity load forecasting supports grid reliability, generation scheduling, and operational planning for power systems.
+
+Success Metrics:
+- MAE (Mean Absolute Error)
+- RMSE (Root Mean Squared Error)
+- R² (Coefficient of Determination)
