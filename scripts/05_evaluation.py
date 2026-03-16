@@ -2,13 +2,15 @@
 05_evaluation.py
 
 Purpose:
-Evaluate and compare baseline and feature-engineered models.
+Evaluate and compare baseline and feature-engineered models
+using standard regression metrics.
 """
 
 import pandas as pd
 import numpy as np
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from pathlib import Path
+
 
 def evaluate_file(file_path, model_name):
     df = pd.read_csv(file_path)
@@ -27,7 +29,12 @@ def evaluate_file(file_path, model_name):
         "R2": r2
     }
 
+
 def main():
+
+    metrics_dir = Path("outputs/metrics")
+    metrics_dir.mkdir(parents=True, exist_ok=True)
+
     results = []
 
     results.append(
@@ -44,14 +51,14 @@ def main():
         )
     )
 
-    metrics_dir = Path("outputs/metrics")
-    metrics_dir.mkdir(parents=True, exist_ok=True)
-
     metrics_df = pd.DataFrame(results)
-    metrics_df.to_csv("outputs/metrics/evaluation_metrics.csv", index=False)
-   
+    output_file = metrics_dir / "evaluation_metrics.csv"
+    metrics_df.to_csv(output_file, index=False)
+
     print("Evaluation complete.")
     print(metrics_df)
+    print(f"\nMetrics saved to {output_file}")
+
 
 if __name__ == "__main__":
     main()

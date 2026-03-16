@@ -8,6 +8,7 @@ Generate a simple summary report of project outputs.
 import os
 from pathlib import Path
 
+
 def main():
 
     print("CRISP-DM Stage: Reporting")
@@ -25,9 +26,7 @@ def main():
 
     # Display contents
     for folder in output_dirs:
-
         print(f"\nContents of {folder}:")
-
         files = os.listdir(folder)
 
         if files:
